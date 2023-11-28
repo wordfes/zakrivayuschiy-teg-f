@@ -19,7 +19,7 @@
   flex-direction: column;
   align-items: center;
   color: var(--themes-main-color);
-  font-family: var(--main-font), Arial, sans-serif;
+  font-family: var(--main-font), sans-serif;
   background-color: var(--themes-background, #fff);
   background-image: repeating-linear-gradient(
       0deg,
@@ -53,23 +53,24 @@
   border: 2px solid var(--themes-main-color, #000);
   padding-block-start: 136px;
   padding-block-end: 23px;
-  font-family: "Press Start 2P", sans-serif;
-  font-size: 23px;
+  font-family: var(--accent-font), fantasy;
   background-color: var(--themes-background, #fff);
   max-inline-size: 700px;
   inline-size: 100%;
 }
 
-.header__title {
-  margin-block-end: 18px;
-  font-family: "Press Start 2P", sans-serif;
+.header__logo {
+  margin-block-end: 20px;
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  line-height: 1;
 }
 
-.header__text {
-  margin-block-end: 22px;
+.header__title {
+  margin-block-end: 25px;
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  line-height: 1;
   text-transform: uppercase;
 }
 
@@ -131,8 +132,8 @@
 .theme-menu__button:disabled::before {
   content: "▶";
   position: absolute;
-  animation: 0.5s ease-in-out infinite alternate arrow-move;
   left: -18px;
+  animation: 0.5s ease-in-out infinite alternate arrow-move;
 }
 
 .section__card {
@@ -182,7 +183,7 @@
   z-index: 1;
   opacity: 0.5;
   color: var(--themes-main-color, #000);
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   text-shadow: 1px 1px var(--themes-background, #fff),
     -1px -1px var(--themes-background, #fff),
@@ -337,7 +338,7 @@
   align-items: center;
   border: 2px solid var(--themes-main-color);
   overflow: hidden;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   font-size: 14px;
   line-height: 90%;
@@ -350,10 +351,10 @@
   position: absolute;
   top: 0;
   left: -100%;
-  inline-size: 100%;
-  block-size: 100%;
   background-color: var(--themes-main-color, #000);
   transition: 0.5s ease-in-out;
+  inline-size: 100%;
+  block-size: 100%;
 }
 
 .card__like-button {
@@ -430,11 +431,17 @@
   color: var(--button-color, #fff);
 }
 
+.dialog[open] {
+  display: flex;
+}
+
 .dialog {
+  flex-direction: column;
+  gap: 30px;
   border: 2px solid var(--themes-main-color, #000);
   padding-inline: 30px;
   padding-block: 30px;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   background-color: var(--themes-background, #fff);
   min-block-size: 192px;
   min-inline-size: 356px;
@@ -448,12 +455,11 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-block-end: 30px;
 }
 
 .dialog__title {
   color: var(--themes-main-color, #000);
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
@@ -467,18 +473,9 @@
 
 @media (width<=375px) {
   .header {
-	  padding-block-start: 115px;
-    padding-block-end: 15px;
-    min-block-size: 323px;
+	  padding-block-start: 120px;
+    min-block-size: 327px;
     min-inline-size: 375px;
-  }
-
-  .header__title {
-    margin-block-end: 15px;
-  }
-
-  .theme-menu__list {
-    padding-block-end: 8px;
   }
 
   .card {
@@ -516,8 +513,9 @@
 }
 
 @supports ((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
-  .watermark::before {
+  .watermark {
     text-shadow: none;
     -webkit-text-stroke: 1px var(--themes-background, #fff);
+    text-stroke: 1px var(--themes-background, #fff);
   }
 }
